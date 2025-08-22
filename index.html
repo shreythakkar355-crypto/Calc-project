@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calculator</title>
+    <style>
+      body { font-family: system-ui, Arial, sans-serif; margin: 2rem; }
+      .calc { width: 320px; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+      input { width: 100%; font-size: 1.4rem; padding: .5rem; margin-bottom: .5rem; }
+      .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; }
+      button { padding: .75rem; font-size: 1rem; }
+    </style>
+  </head>
+  <body>
+    <h1>Simple Calculator</h1>
+    <div class="calc">
+      <input id="display" type="text" readonly />
+      <div class="grid">
+        <button onclick="append('7')">7</button>
+        <button onclick="append('8')">8</button>
+        <button onclick="append('9')">9</button>
+        <button onclick="append('/')">/</button>
+        <button onclick="append('4')">4</button>
+        <button onclick="append('5')">5</button>
+        <button onclick="append('6')">6</button>
+        <button onclick="append('*')">*</button>
+        <button onclick="append('1')">1</button>
+        <button onclick="append('2')">2</button>
+        <button onclick="append('3')">3</button>
+        <button onclick="append('-')">-</button>
+        <button onclick="append('0')">0</button>
+        <button onclick="append('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="append('+')">+</button>
+        <button onclick="clearDisplay()" style="grid-column: span 4;">Clear</button>
+      </div>
+    </div>
+    <script>
+      const display = document.getElementById('display');
+      function append(val){ display.value += val; }
+      function clearDisplay(){ display.value = ''; }
+      function calculate(){
+        try { display.value = eval(display.value); }
+        catch(e){ display.value = 'Error'; }
+      }
+    </script>
+  </body>
+</html>
